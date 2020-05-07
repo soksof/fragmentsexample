@@ -3,11 +3,15 @@
     <th:block layout:insert="~{fragments/htmlHead}"/>
     <body>
         <th:block layout:replace="~{fragments/topNavigation}"/>
+        <div>
+            <th:block layout:replace="~{fragments/sidebar}"/>
 
-        <th:block layout:fragment="content"/>
-
-        <th:block layout:replace="~{fragments/footer}"/>
-
+            <div>
+                <th:block layout:fragment="content"/>
+                <th:block layout:replace="~{fragments/footer}"/>
+            </div>
+        </div>
         <th:block layout:replace="~{fragments/jsScripts :: end}"/>
+
     </body>
 </html>
