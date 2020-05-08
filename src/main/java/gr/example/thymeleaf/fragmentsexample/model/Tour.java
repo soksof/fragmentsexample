@@ -6,13 +6,15 @@ public class Tour {
     private int days;
     private int reviews;
     private int price;
+    private String image;
 
-    public Tour(String title, String subtitle, int days, int reviews, int price) {
+    public Tour(String title, String subtitle, int days, int reviews, int price, String image) {
         this.title = title;
         this.subtitle = subtitle;
         this.days = days;
         this.reviews = reviews;
         this.price = price;
+        this.image = image;
     }
 
     public String getTitle() {
@@ -53,5 +55,13 @@ public class Tour {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
