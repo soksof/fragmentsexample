@@ -8,6 +8,12 @@ public class Tour {
     private int price;
     private String image;
 
+    /**
+     * Empty controller
+     */
+    public Tour(){
+    }
+
     public Tour(String title, String subtitle, int days, int reviews, int price, String image) {
         this.title = title;
         this.subtitle = subtitle;
