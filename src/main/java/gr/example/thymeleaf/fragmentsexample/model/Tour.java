@@ -4,14 +4,15 @@ public class Tour {
     private String title;
     private String subtitle;
     private int days;
-    private int reviews;
     private int price;
+    private int reviews;
     private String image;
 
     /**
      * Empty controller
      */
     public Tour(){
+        this.image="default";
     }
 
     public Tour(String title, String subtitle, int days, int reviews, int price, String image) {

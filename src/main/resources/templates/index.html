@@ -20,7 +20,7 @@
                             <a href="#" class="prise" th:text="${tour.getPrice()+'€'}">500</a>
                         </div>
                         <div class="place_info">
-                            <a href="destination_details.html"><h3 th:text="${tour.getTitle()}">Title</h3></a>
+                            <a th:href="@{/tour/update/{title}(title=${tour.getTitle()})}"><h3 th:text="${tour.getTitle()}">Title</h3></a>
                             <p th:text="${tour.getSubtitle()}">subtitle</p>
                             <div class="rating_days d-flex justify-content-between">
                                 <span class="d-flex justify-content-center align-items-center">
