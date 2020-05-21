@@ -14,6 +14,8 @@ public class IndexController {
     public String welcome(Model model) {
         model.addAttribute("header", "Welcome to the HAEC fullstack Explore Greece project");
         model.addAttribute("title", "Welcome!");
+        String subHeader = "page created by Sokratis";
+        model.addAttribute("subHeader", subHeader);
 
         List<Tour> tours = new ArrayList<>();
         tours.add(new Tour("Athina", "Attiki", 6, 200, 600, "athens"));
