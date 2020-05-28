@@ -7,10 +7,13 @@ import gr.example.thymeleaf.fragmentsexample.service.TourService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class TourController {
@@ -30,13 +33,19 @@ public class TourController {
     }
 
     @PostMapping("/tour/new")
-    public String saveNewTour(@ModelAttribute("newTour") TourForm tourForm, BindingResult result, Model model){
+    public String saveNewTour(@ModelAttribute("newTour") @Valid TourForm tourForm, BindingResult result, Model model){
+        for(ObjectError error: result.getAllErrors()){
+            System.out.println(error.getDefaultMessage());
+        }
+        if(result.hasErrors()){
+            model.addAttribute("newTour", tourForm);
+            return "fragments/tour/new";
+        }
         Tour tour = tourMapper.map(tourForm);
         System.out.println("I am sending you the new tour with the title: "+tour.getTitle());
         tourService.saveTour(tour);
         return "redirect:/index";
     }
-
 
     @GetMapping("/tour/update/{title}")
     public String updateTour(@PathVariable String title, Model model){

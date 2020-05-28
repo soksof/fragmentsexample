@@ -3,7 +3,11 @@
       layout:decorate="~{layout}" with:title="'Create a new Tour'">
 <th:block layout:fragment="content">
 
-
+<style>
+    .error{
+        color: red;
+    }
+</style>
     <!-- bradcam_area  -->
     <div class="bradcam_area bradcam_bg_4">
         <div class="container">
@@ -28,26 +32,38 @@
                     <div class="mt-10">
                         <label for="title">Τίτλος</label>
                         <input type="text" name="title" placeholder="Τίτλος" id="title" th:field="*{place}"
-                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Τίτλος'" required
+                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Τίτλος'"
                                class="single-input">
+                        <label for="title" class="error"
+                               th:if="${#fields.hasErrors('place')}"
+                               th:errors="*{place}">place ERROR</label>
                     </div>
                     <div class="mt-10">
                         <label for="subtitle">Υπότιτλος</label>
                         <input type="text" name="subtitle" placeholder="Υπότιτλος" id="subtitle" th:field="*{region}"
-                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Υπότιτλος'" required
+                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Υπότιτλος'"
                                class="single-input">
+                        <label for="subtitle" class="error"
+                               th:if="${#fields.hasErrors('region')}"
+                               th:errors="*{region}">region ERROR</label>
                     </div>
                     <div class="mt-10">
                         <label for="days">Αριθμός ημερών</label>
                         <input type="text" name="days" placeholder="Αριθμός ημερών" id="days" th:field="*{days}"
                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Αριθμός ημερών'" required
                                class="single-input">
+                        <label for="days" class="error"
+                               th:if="${#fields.hasErrors('days')}"
+                               th:errors="*{days}">days ERROR</label>
                     </div>
                     <div class="input-group-icon mt-10">
                         <div class="icon"><i class="fa fa-eur" aria-hidden="true"></i></div>
                         <input type="text" name="price" placeholder="Κόστος" id="price" th:field="*{price}"
                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Κόστος'" required
                                class="single-input">
+                        <label for="price" class="error"
+                               th:if="${#fields.hasErrors('price')}"
+                               th:errors="*{price}">price ERROR</label>
                     </div>
                     <p>
                         <div class="reset_btn">
