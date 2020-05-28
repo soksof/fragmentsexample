@@ -1,5 +1,7 @@
 package gr.example.thymeleaf.fragmentsexample.controller;
 
+import gr.example.thymeleaf.fragmentsexample.mapper.TourForm;
+import gr.example.thymeleaf.fragmentsexample.mapper.TourMapper;
 import gr.example.thymeleaf.fragmentsexample.model.Tour;
 import gr.example.thymeleaf.fragmentsexample.service.TourService;
 import org.springframework.stereotype.Controller;
@@ -13,20 +15,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class TourController {
     TourService tourService;
+    TourMapper tourMapper;
 
-    public TourController(TourService tourService){
+    public TourController(TourService tourService, TourMapper tourMapper){
+        this.tourMapper = tourMapper;
         this.tourService = tourService;
     }
 
     @GetMapping("/tour/new")
     public String newTour(Model model){
-        Tour newTour = new Tour();
+        TourForm newTour = new TourForm();
         model.addAttribute("newTour", newTour);
         return "fragments/tour/new";
     }
 
     @PostMapping("/tour/new")
-    public String saveNewTour(@ModelAttribute("newTour") Tour tour, BindingResult result, Model model){
+    public String saveNewTour(@ModelAttribute("newTour") TourForm tourForm, BindingResult result, Model model){
+        Tour tour = tourMapper.map(tourForm);
         System.out.println("I am sending you the new tour with the title: "+tour.getTitle());
         tourService.saveTour(tour);
         return "redirect:/index";
