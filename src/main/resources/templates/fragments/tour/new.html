@@ -27,13 +27,13 @@
                 <form th:action="@{/tour/new}" method="POST" th:object="${newTour}">
                     <div class="mt-10">
                         <label for="title">Τίτλος</label>
-                        <input type="text" name="title" placeholder="Τίτλος" id="title" th:field="*{title}"
+                        <input type="text" name="title" placeholder="Τίτλος" id="title" th:field="*{place}"
                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Τίτλος'" required
                                class="single-input">
                     </div>
                     <div class="mt-10">
                         <label for="subtitle">Υπότιτλος</label>
-                        <input type="text" name="subtitle" placeholder="Υπότιτλος" id="subtitle" th:field="*{subtitle}"
+                        <input type="text" name="subtitle" placeholder="Υπότιτλος" id="subtitle" th:field="*{region}"
                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Υπότιτλος'" required
                                class="single-input">
                     </div>
